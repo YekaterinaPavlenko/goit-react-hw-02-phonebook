@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import fs from "./ContactForm.module.css";
+import cfs from "./ContactForm.module.css";
 import PropTypes from "prop-types";
 
 import { v4 as uuidv4 } from "uuid";
@@ -7,50 +7,51 @@ import { v4 as uuidv4 } from "uuid";
 class ContactForm extends Component {
   state = {
     name: "",
-    phone: "",
-    phoneId: "",
+    number: "",
   };
 
-  phoneId = uuidv4();
+  // phoneId = uuidv4();
 
   handleChange = (e) => {
     const { name, value } = e.currentTarget;
-    console.log(e.currentTarget.value);
+    // console.log(e.currentTarget.value);
     this.setState({ [name]: value });
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onSubmit({ ...this.state, phoneId: this.phoneId });
+    this.props.onSubmit({ id: uuidv4(), ...this.state });
     this.reset();
   };
   reset = () => {
-    this.setState({ name: "", phone: "" });
+    this.setState({ name: "", number: "" });
   };
   render() {
-    const { name, phone } = this.state;
+    const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className={fs.form}>
-        <label>
+      <form onSubmit={this.handleSubmit} className={cfs.form}>
+        <label className={cfs.label}>
+          Name
           <input
             type="text"
-            className={fs.input}
+            className={cfs.input}
             placeholder="Enter name"
             name="name"
             onChange={this.handleChange}
             value={name}
           ></input>
         </label>
-        <label>
+        <label className={cfs.label}>
+          Number
           <input
             type="phone"
-            className={fs.input}
+            className={cfs.input}
             placeholder="Enter phone number"
-            name="phone"
+            name="number"
             onChange={this.handleChange}
-            value={phone}
+            value={number}
           ></input>
         </label>
-        <button type="submit" className={fs.button}>
+        <button type="submit" className={cfs.button}>
           Add contact
         </button>
       </form>

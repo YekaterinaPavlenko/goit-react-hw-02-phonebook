@@ -1,0 +1,17 @@
+ul {
+  list-style: disc;
+}
+p {
+  margin: 5px;
+}
+.list {
+  /* display: flex; */
+  width: 80%;
+  margin: auto;
+  padding: 5px;
+  list-style: disc;
+  font-size: 20px;
+}
+.item {
+  display: flex;
+}
