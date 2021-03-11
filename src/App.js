@@ -1,38 +1,31 @@
 import React, { Component } from "react";
-
 import "./App.css";
-// import { v4 as uuidv4 } from "uuid";
-// uuidv4();
+import ContactForm from "./components/ContactsForm/ContactsForm";
 class App extends Component {
   state = {
     contacts: [],
-    name: "",
   };
-  handleChange = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-    this.setState({ name: e.target.value });
 
-    console.log(this.state);
-    console.log(`ввели имя:`);
+  formSubmitHandler = (data) => {
+    const { contacts } = this.state;
+    console.log(data);
+    // console.log(prevState);
+    this.setState((prevState) => {
+      console.log(prevState);
+      return {
+        contacts: prevState.contacts.map((contact) => {
+          console.log(contact);
+          return contact.phone ? contacts : { ...contacts, data };
+        }),
+      };
+    });
   };
   render() {
-    const { name, contacts } = this.state;
+    // const { name, contacts } = this.state;
     return (
       <div className="App">
         <h1>Phonebook</h1>
-        <form>
-          <label>
-            <input
-              type="text"
-              placeholder="Enter name"
-              name="name"
-              onChange={this.handleChange}
-              value={name}
-            ></input>
-          </label>
-        </form>
-        {/* <ContactForm /> */}
+        <ContactForm onSubmit={this.formSubmitHandler} />
 
         <h2>Contacts</h2>
         {/* <Filter />
