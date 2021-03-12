@@ -26,3 +26,9 @@
   border-radius: 4px;
   font-size: 20px;
 }
+
+.button:hover,
+.button:focus {
+  cursor: pointer;
+  background-color: rgb(245, 94, 177);
+}

@@ -34,6 +34,8 @@ class ContactForm extends Component {
           <input
             type="text"
             className={cfs.input}
+            pattern="^[A-Za-zА-Яа-яЁё-0-9\s_]+$"
+            required
             placeholder="Enter name"
             name="name"
             onChange={this.handleChange}
@@ -45,7 +47,9 @@ class ContactForm extends Component {
           <input
             type="phone"
             className={cfs.input}
-            placeholder="Enter phone number"
+            pattern="[+][0-9]{2}[-]\d{3}[-]\d{3}[-]\d{2}[-]\d{2}"
+            required
+            placeholder="Enter phone number: +xx-xxx-xxx-xx-xx"
             name="number"
             onChange={this.handleChange}
             value={number}
