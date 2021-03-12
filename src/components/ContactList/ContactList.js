@@ -8,7 +8,10 @@ class ContactList extends Component {
     const { contacts } = this.props;
     return (
       <ul className={ls.list}>
-        <ContactItem contacts={contacts} />
+        <ContactItem
+          contacts={contacts}
+          deleteContact={this.props.deleteContact}
+        />
       </ul>
     );
   }
